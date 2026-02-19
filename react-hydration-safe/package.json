@@ -1,0 +1,58 @@
+{
+  "name": "react-hydration-safe",
+  "version": "0.1.0",
+  "description": "Hydration-safe client primitives for React + Next.js (useHydrated, ClientOnly, useMediaQuery).",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "require": "./dist/client.cjs"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "jsdom": "^24.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "hydration",
+    "ssr",
+    "hook",
+    "media-query"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourname/react-hydration-safe.git"
+  }
+}

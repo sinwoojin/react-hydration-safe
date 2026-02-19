@@ -49,7 +49,9 @@ export function ClientOnly({ children, fallback = null }: ClientOnlyProps) {
 }
 
 function hasMatchMedia(): boolean {
-  return typeof window !== "undefined" && typeof window.matchMedia === "function";
+  return (
+    typeof window !== "undefined" && typeof window.matchMedia === "function"
+  );
 }
 
 /**
@@ -58,10 +60,16 @@ function hasMatchMedia(): boolean {
  * - On the server, returns `defaultValue`.
  * - On the client, subscribes to matchMedia changes using useSyncExternalStore.
  */
-export function useMediaQuery(query: string, options: MediaQueryOptions = {}): boolean {
+export function useMediaQuery(
+  query: string,
+  options: MediaQueryOptions = {},
+): boolean {
   const { defaultValue = false } = options;
 
-  const getServerSnapshot = React.useCallback(() => defaultValue, [defaultValue]);
+  const getServerSnapshot = React.useCallback(
+    () => defaultValue,
+    [defaultValue],
+  );
 
   const getSnapshot = React.useCallback(() => {
     if (!hasMatchMedia()) return defaultValue;
@@ -85,7 +93,7 @@ export function useMediaQuery(query: string, options: MediaQueryOptions = {}): b
         (mql as any).removeListener?.(handler);
       };
     },
-    [query]
+    [query],
   );
 
   return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
